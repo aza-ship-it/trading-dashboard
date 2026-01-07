@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { FileText, Brain, TrendingUp } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 
 const categoryIcons = {
   strategy: TrendingUp,
@@ -86,25 +87,30 @@ export default function KnowledgePage() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="prose prose-invert prose-slate max-w-none">
-                  <div 
-                    className="text-slate-300 leading-relaxed space-y-4"
-                    dangerouslySetInnerHTML={{ 
-                      __html: selectedArticle.content
-                        .replace(/^# (.*$)/gim, '<h1 class="text-2xl font-bold text-slate-50 mt-6 mb-4">$1</h1>')
-                        .replace(/^## (.*$)/gim, '<h2 class="text-xl font-semibold text-slate-50 mt-5 mb-3">$1</h2>')
-                        .replace(/^### (.*$)/gim, '<h3 class="text-lg font-medium text-slate-50 mt-4 mb-2">$1</h3>')
-                        .replace(/^\- (.*$)/gim, '<li class="ml-4">$1</li>')
-                        .replace(/^\d+\. (.*$)/gim, '<li class="ml-4">$1</li>')
-                        .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-slate-100">$1</strong>')
-                        .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
-                        .replace(/```([\s\S]*?)```/g, '<pre class="bg-slate-900 p-4 rounded-lg overflow-x-auto my-4"><code class="text-sm font-mono text-emerald-400">$1</code></pre>')
-                        .replace(/`(.*?)`/g, '<code class="bg-slate-900 px-2 py-0.5 rounded text-sm font-mono text-emerald-400">$1</code>')
-                        .replace(/^> (.*$)/gim, '<blockquote class="border-l-4 border-slate-700 pl-4 italic text-slate-400 my-4">$1</blockquote>')
-                        .replace(/\n\n/g, '</p><p class="mb-4">')
-                        .replace(/^(?!<[h|l|p|b|c])(.*$)/gim, '<p class="mb-4">$1</p>')
+                <div className="prose prose-invert prose-slate max-w-none text-slate-300 leading-relaxed space-y-4">
+                  <ReactMarkdown
+                    components={{
+                      h1: ({ node, ...props }) => <h1 className="text-2xl font-bold text-slate-50 mt-6 mb-4" {...props} />,
+                      h2: ({ node, ...props }) => <h2 className="text-xl font-semibold text-slate-50 mt-5 mb-3" {...props} />,
+                      h3: ({ node, ...props }) => <h3 className="text-lg font-medium text-slate-50 mt-4 mb-2" {...props} />,
+                      p: ({ node, ...props }) => <p className="mb-4 text-slate-300" {...props} />,
+                      strong: ({ node, ...props }) => <strong className="font-semibold text-slate-100" {...props} />,
+                      em: ({ node, ...props }) => <em className="italic" {...props} />,
+                      code: ({ node, inline, ...props }: any) => 
+                        inline ? (
+                          <code className="bg-slate-900 px-2 py-0.5 rounded text-sm font-mono text-emerald-400" {...props} />
+                        ) : (
+                          <code className="text-sm font-mono text-emerald-400" {...props} />
+                        ),
+                      pre: ({ node, ...props }) => <pre className="bg-slate-900 p-4 rounded-lg overflow-x-auto my-4" {...props} />,
+                      blockquote: ({ node, ...props }) => <blockquote className="border-l-4 border-slate-700 pl-4 italic text-slate-400 my-4" {...props} />,
+                      ul: ({ node, ...props }) => <ul className="list-disc list-inside space-y-2 my-4" {...props} />,
+                      ol: ({ node, ...props }) => <ol className="list-decimal list-inside space-y-2 my-4" {...props} />,
+                      li: ({ node, ...props }) => <li className="text-slate-300" {...props} />,
                     }}
-                  />
+                  >
+                    {selectedArticle.content}
+                  </ReactMarkdown>
                 </div>
               </CardContent>
             </Card>
