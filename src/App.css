@@ -1,0 +1,269 @@
+.dashboard {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.dashboard-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-header h1 {
+  margin: 0 0 1rem 0;
+  color: white;
+  font-size: 2.5rem;
+}
+
+.portfolio-summary {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.total-value {
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.tab {
+  padding: 1rem 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+}
+
+.tab:hover {
+  color: #667eea;
+}
+
+.tab.active {
+  color: #667eea;
+  border-bottom-color: #667eea;
+}
+
+.stocks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.stock-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stock-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  border-color: #667eea;
+}
+
+.stock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.stock-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.positive {
+  color: #10b981;
+  font-weight: bold;
+}
+
+.negative {
+  color: #ef4444;
+  font-weight: bold;
+}
+
+.stock-details {
+  text-align: left;
+}
+
+.stock-details p {
+  margin: 0.5rem 0;
+  color: #666;
+}
+
+.price {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333 !important;
+}
+
+.trade-section, .portfolio-section, .watchlist-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.trade-section h2, .portfolio-section h2, .watchlist-section h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.trade-form {
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.select-input, .number-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.select-input:focus, .number-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.selected-stock-info {
+  background: #f3f4f6;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+}
+
+.selected-stock-info p {
+  margin: 0.5rem 0;
+  font-weight: 500;
+  color: #333;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.buy-btn, .sell-btn, .add-btn {
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.buy-btn {
+  background: #10b981;
+  color: white;
+}
+
+.buy-btn:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+}
+
+.sell-btn {
+  background: #ef4444;
+  color: white;
+}
+
+.sell-btn:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+}
+
+.watchlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.watchlist-item {
+  background: #f9fafb;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  border: 2px solid #e5e7eb;
+  transition: all 0.3s;
+}
+
+.watchlist-item:hover {
+  border-color: #667eea;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.watchlist-item h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.add-btn {
+  background: #667eea;
+  color: white;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.add-btn:hover {
+  background: #5568d3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+@media (max-width: 768px) {
+  .stocks-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .button-group {
+    flex-direction: column;
+  }
+}
