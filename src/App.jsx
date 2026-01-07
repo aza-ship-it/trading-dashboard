@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
+// Generate watchlist prices outside the component
+const initialWatchlistStocks = ['AMZN', 'META', 'NFLX', 'NVDA'].map((symbol) => ({
+  symbol,
+  price: (Math.random() * 300 + 100).toFixed(2)
+}))
+
 function App() {
   const [portfolio, setPortfolio] = useState([
     { id: 1, symbol: 'AAPL', shares: 10, price: 178.45, change: 2.34 },
@@ -158,20 +164,20 @@ function App() {
         <div className="watchlist-section">
           <h2>Market Watchlist</h2>
           <div className="watchlist-grid">
-            {['AMZN', 'META', 'NFLX', 'NVDA'].map((symbol, idx) => (
+            {initialWatchlistStocks.map((stock, idx) => (
               <div key={idx} className="watchlist-item">
-                <h3>{symbol}</h3>
-                <p className="price">${(Math.random() * 300 + 100).toFixed(2)}</p>
+                <h3>{stock.symbol}</h3>
+                <p className="price">${stock.price}</p>
                 <button 
                   onClick={() => {
                     setPortfolio([...portfolio, {
                       id: portfolio.length + 1,
-                      symbol,
+                      symbol: stock.symbol,
                       shares: 0,
-                      price: Math.random() * 300 + 100,
+                      price: parseFloat(stock.price),
                       change: (Math.random() - 0.5) * 10
                     }])
-                    alert(`Added ${symbol} to portfolio`)
+                    alert(`Added ${stock.symbol} to portfolio`)
                   }}
                   className="add-btn"
                 >
