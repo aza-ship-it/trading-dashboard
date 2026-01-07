@@ -300,7 +300,7 @@ export const mockTrades: Trade[] = [
     exitPrice: 1.2580,
     stopLoss: 1.2620,
     positionSize: 10000,
-    notes: 'Faux signal, le prix n\'a pas rebondi comme prévu.',
+    notes: "Faux signal, le prix n'a pas rebondi comme prévu.",
     emotionalScore: 5,
     followedPlan: true,
     pnl: -700,

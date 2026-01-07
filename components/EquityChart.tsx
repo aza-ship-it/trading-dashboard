@@ -27,7 +27,7 @@ export function EquityChart({ data }: EquityChartProps) {
             <YAxis 
               stroke="#64748b"
               tick={{ fill: '#94a3b8' }}
-              style={{ fontSize: '12px', fontFamily: 'var(--font-geist-mono)' }}
+              style={{ fontSize: '12px', fontFamily: 'var(--font-mono)' }}
             />
             <Tooltip
               contentStyle={{

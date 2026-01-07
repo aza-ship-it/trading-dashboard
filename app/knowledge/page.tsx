@@ -96,11 +96,15 @@ export default function KnowledgePage() {
                       p: ({ node, ...props }) => <p className="mb-4 text-slate-300" {...props} />,
                       strong: ({ node, ...props }) => <strong className="font-semibold text-slate-100" {...props} />,
                       em: ({ node, ...props }) => <em className="italic" {...props} />,
-                      code: ({ node, inline, ...props }: any) => 
+                      code: ({ node, inline, className, children, ...props }: any) => 
                         inline ? (
-                          <code className="bg-slate-900 px-2 py-0.5 rounded text-sm font-mono text-emerald-400" {...props} />
+                          <code className="bg-slate-900 px-2 py-0.5 rounded text-sm font-mono text-emerald-400" {...props}>
+                            {children}
+                          </code>
                         ) : (
-                          <code className="text-sm font-mono text-emerald-400" {...props} />
+                          <code className="text-sm font-mono text-emerald-400" {...props}>
+                            {children}
+                          </code>
                         ),
                       pre: ({ node, ...props }) => <pre className="bg-slate-900 p-4 rounded-lg overflow-x-auto my-4" {...props} />,
                       blockquote: ({ node, ...props }) => <blockquote className="border-l-4 border-slate-700 pl-4 italic text-slate-400 my-4" {...props} />,
